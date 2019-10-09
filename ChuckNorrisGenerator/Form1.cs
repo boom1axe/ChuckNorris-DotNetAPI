@@ -31,5 +31,12 @@ namespace ChuckNorrisGenerator
                 cboCatagoies.Items.Add(cat);
             }
         }
+
+        private async void btnGetJoke_ClickAsync(object sender, EventArgs e)
+        {
+            Joke joke = await ChuckNorrisClient.GetRandomJoke();
+            string j = $"{joke.Id}:{joke.JokeText}\n\n{string.Join(",", joke.Categories)}";
+            MessageBox.Show(j);
+        }
     }
 }
